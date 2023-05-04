@@ -1,5 +1,9 @@
+/* Filnavn: Keyboard_8x
+  Versjon: V1.0
+  Revisjon: V1.0 - 04.05.23 - Første versjon - Kenneth Paulsen 
 
-
+  Program:
+*/
 #include "Keyboard.h"
 #include "HID.h"
 
@@ -62,43 +66,74 @@ void loop() {
 
 void knapp1Trykket() {  //DIAGNOSE
   Serial.println("+00");
-  Keyboard.press(KEY_F3);
-  Keyboard.releaseAll();
+  Keyboard.write(KEY_F3);
   delay(sepDel);
-  Keyboard.press(KEY_TAB);
-  Keyboard.releaseAll();
-  delay(sepDel);
-  Keyboard.press(KEY_TAB);
-  Keyboard.releaseAll();
+  Keyboard.write(KEY_TAB);
   delay(sepDel);
   Keyboard.write(KEY_KP_PLUS);
-  Keyboard.releaseAll();
   delay(sepDel);
   Keyboard.println("00");
   delay(sepDel);
   Keyboard.write(KEY_DOWN_ARROW);
-  Keyboard.releaseAll();
-  delay(sepDel);
-  Keyboard.write(KEY_DOWN_ARROW);
-  Keyboard.releaseAll();
   delay(sepDel);
   Keyboard.write(KEY_RETURN);
-  Keyboard.releaseAll();
+  delay(sepDel);
+  Keyboard.write(KEY_RETURN);
   delay(sepDel);
   Keyboard.write(KEY_ESC);
+}
+
+void knapp2Trykket() {  // Referanser
+  Keyboard.write(KEY_LEFT_ARROW);
+  delay(sepDel);
+  Keyboard.write(KEY_LEFT_ARROW);
+  for (int t = 0; t <= 7; t++) {
+    Keyboard.write(KEY_TAB);
+    delay(sepDel);
+  }
+  Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.print("c");
+  Keyboard.releaseAll();
+  Keyboard.press(KEY_LEFT_SHIFT);
+  delay(sepDel);
+  for (int sT = 0; sT <= 7; sT++) {
+    Keyboard.write(KEY_TAB);
+    delay(sepDel);
+  }
+  Keyboard.releaseAll();
+  Keyboard.write(KEY_RIGHT_ARROW);
+  delay(sepDel);
+  for (int t = 0; t <= 3; t++) {
+    Keyboard.write(KEY_TAB);
+    delay(sepDel);
+  }
+  Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.print("v");
   Keyboard.releaseAll();
 }
 
-void knapp2Trykket() {
-  // Noe kode
+void knapp3Trykket() {  // Not printed
+  Keyboard.write(KEY_TAB);
+  delay(sepDel);
+  Keyboard.press(KEY_DOWN_ARROW);
+  Keyboard.releaseAll();
+  delay(sepDel);
+  Keyboard.press(KEY_DOWN_ARROW);
+  Keyboard.releaseAll();
+  delay(sepDel);
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.write(KEY_RETURN);
+  Keyboard.releaseAll();
 }
 
-void knapp3Trykket() {
-  // Noe kode
-}
-
-void knapp4Trykket() {
-  // Noe kode
+void knapp4Trykket() {  // 0,5 Fett
+  Keyboard.write(KEY_F3);
+  delay(sepDel);
+  Keyboard.println("1006529");
+  delay(sepDel);
+  Keyboard.println("0,5");
+  delay(sepDel);
+  Keyboard.write(KEY_ESC);
 }
 
 void knapp5Trykket() {
