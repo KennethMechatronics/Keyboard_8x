@@ -1,4 +1,4 @@
-/* Filnavn: Keyboard_8x.ino
+/* Filnavn: Keyboard_8x
   Versjon: V1.0
   Revisjon: 5 - 14.05.23 - Kenneth Paulsen 
 
@@ -43,50 +43,36 @@ void setup() {
 void loop() {
 
   if (digitalRead(knapp1) == LOW) {
-    digitalWrite(LED_BUILTIN, HIGH);
     diagnose();
     delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
   } else if (digitalRead(knapp2) == LOW) {
-    digitalWrite(LED_BUILTIN, HIGH);
     referanser();
     delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
   } else if (digitalRead(knapp3) == LOW) {
-    digitalWrite(LED_BUILTIN, HIGH);
     notPrinted();
     delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
   } else if (digitalRead(knapp4) == LOW) {
-    digitalWrite(LED_BUILTIN, HIGH);
     fett();
     delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
   } else if (digitalRead(knapp5) == LOW) {
-    digitalWrite(LED_BUILTIN, HIGH);
     limeArbKode();
     delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
   } else if (digitalRead(knapp6) == LOW) {
-    digitalWrite(LED_BUILTIN, HIGH);
     ramas();
     delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
   } else if (digitalRead(knapp7) == LOW) {
-    digitalWrite(LED_BUILTIN, HIGH);
     smoreHenger();
     delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
   } else if (digitalRead(knapp8) == LOW) {
-    digitalWrite(LED_BUILTIN, HIGH);
     knapp8Trykket();
     delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
   }
 }
 
 
 void diagnose() {  //DIAGNOSE
+  digitalWrite(LED_BUILTIN, HIGH);
+
   Keyboard.write(KEY_F3);
   delay(dly);
   Keyboard.write(KEY_TAB);
@@ -102,10 +88,13 @@ void diagnose() {  //DIAGNOSE
   Keyboard.write(KEY_RETURN);
   delay(dly);
   Keyboard.write(KEY_ESC);
+
   digitalWrite(LED_BUILTIN, LOW);
 }
 
 void referanser() {  // Referanser
+  digitalWrite(LED_BUILTIN, HIGH);
+
   digitalWrite(LED_BUILTIN, HIGH);
   Keyboard.write(KEY_LEFT_ARROW);
   delay(dly);
@@ -147,13 +136,12 @@ void referanser() {  // Referanser
     delay(dly);
   }
 
-
-
   digitalWrite(LED_BUILTIN, LOW);
 }
 
 void notPrinted() {  // Not printed
   digitalWrite(LED_BUILTIN, HIGH);
+
   Keyboard.write(KEY_TAB);
   delay(dly);
   Keyboard.press(KEY_DOWN_ARROW);
@@ -168,11 +156,13 @@ void notPrinted() {  // Not printed
   Keyboard.press(KEY_LEFT_SHIFT);
   Keyboard.write(KEY_RETURN);
   Keyboard.releaseAll();
+
   digitalWrite(LED_BUILTIN, LOW);
 }
 
 void fett() {  // 0,5 Fett
   digitalWrite(LED_BUILTIN, HIGH);
+
   Keyboard.write(KEY_F2);
   delay(dly);
   Keyboard.println("1006529");
@@ -180,10 +170,13 @@ void fett() {  // 0,5 Fett
   Keyboard.println("0,5");
   delay(dly);
   Keyboard.write(KEY_ESC);
+
   digitalWrite(LED_BUILTIN, LOW);
 }
 
 void limeArbKode() {  // Lime inn arbeidskode
+  digitalWrite(LED_BUILTIN, HIGH);
+
   Keyboard.write(KEY_F3);
   delay(dly);
   Keyboard.press(KEY_LEFT_CTRL);
@@ -198,9 +191,13 @@ void limeArbKode() {  // Lime inn arbeidskode
   Keyboard.write(KEY_RETURN);
   delay(dly);
   Keyboard.write(KEY_ESC);
+
+  digitalWrite(LED_BUILTIN, LOW);
 }
 
 void ramas() {  // Ramas
+  digitalWrite(LED_BUILTIN, HIGH);
+
   Keyboard.press(KEY_LEFT_CTRL);
   delay(dly);
   Keyboard.print("j");
@@ -219,9 +216,13 @@ void ramas() {  // Ramas
   Keyboard.println("62055");
   delay(dly * 2);
   Keyboard.write(KEY_RETURN);
+
+  digitalWrite(LED_BUILTIN, LOW);
 }
 
-void smoreHenger() { // Smøre henger  248	F8	ø
+void smoreHenger() {  // Smøre henger  248	F8	ø
+  digitalWrite(LED_BUILTIN, HIGH);
+
   Keyboard.write(KEY_F3);
   delay(dly);
   Keyboard.println("21008705");
@@ -231,17 +232,21 @@ void smoreHenger() { // Smøre henger  248	F8	ø
   }
   Keyboard.write(KEY_BACKSPACE);
   delay(dly);
-  Keyboard.print("Smøre henger");
+  Keyboard.print("Sm");
+  Keyboard.print(0xF8);
+  Keyboard.print("re henger");
   delay(dly);
   Keyboard.press(KEY_LEFT_SHIFT);
   delay(dly);
-   for (int t = 0; t <= 5; t++) {
+  for (int t = 0; t <= 5; t++) {
     Keyboard.write(KEY_TAB);
     delay(dly);
   }
   Keyboard.releaseAll();
   delay(dly);
-  Keyboard.println("Smøre henger");
+  Keyboard.print("Sm");
+  Keyboard.print(0xF8);
+  Keyboard.print("re henger");
   delay(dly);
   Keyboard.write(KEY_ESC);
   delay(dly);
