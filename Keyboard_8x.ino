@@ -5,6 +5,7 @@
   Program:
   Dette programmet er laget for å fungere som et macrokeyboard med macroer for nyttige tastetrykk i min nåværende jobb. 
   Macroene byttes med jevne mellomrom ut da en encoder for å bytte layout ennå ikke er loddet på kretskortet. 
+  Pr. rev. 5 spares omtrent 200 tastetrykk pr. ordre, og omtrent 3000 pr. arbeidsdag. 
 */
 #include "Keyboard.h"
 
@@ -95,7 +96,6 @@ void diagnose() {  //DIAGNOSE
 void referanser() {  // Referanser
   digitalWrite(LED_BUILTIN, HIGH);
 
-  digitalWrite(LED_BUILTIN, HIGH);
   Keyboard.write(KEY_LEFT_ARROW);
   delay(dly);
   Keyboard.write(KEY_LEFT_ARROW);
